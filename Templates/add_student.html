@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Student</h2>
+
+<div class="col-md-6">
+<div class="card p-4 shadow">
+
+<form method="POST">
+
+<input class="form-control mb-3" name="name" placeholder="Student Name">
+
+<input class="form-control mb-3" name="email" placeholder="Email">
+
+<input class="form-control mb-3" name="department" placeholder="Department">
+
+<input class="form-control mb-3" name="phone" placeholder="Phone">
+
+<hr>
+
+<h5>Login Details</h5>
+
+<input class="form-control mb-3" name="username" placeholder="Login Username">
+
+<input class="form-control mb-3" name="password" type="password" placeholder="Login Password">
+
+<button class="btn btn-success w-100">Create Student</button>
+
+</form>
+
+<form method="POST">
+
+Name
+<input type="text" name="name" required>
+
+Email
+<input type="email" name="email" required>
+
+Department
+<input type="text" name="department" required>
+
+Phone
+<input type="text" name="phone" required>
+
+Age
+<input type="number" name="age" required>
+
+Parent Name
+<input type="text" name="parent_name" required>
+
+Parent Email
+<input type="email" name="parent_email" required>
+
+Parent Mobile
+<input type="text" name="parent_mobile" required>
+
+Address
+<textarea name="address" required></textarea>
+
+Username
+<input type="text" name="username" required>
+
+Password
+<input type="password" name="password" required>
+
+<button type="submit">Add Student</button>
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Attendance</h2>
+
+<div class="col-md-5">
+<div class="card p-4 shadow">
+
+<form method="POST">
+
+<input class="form-control mb-3" name="total" type="number" placeholder="Total Classes">
+
+<input class="form-control mb-3" name="attended" type="number" placeholder="Attended Classes">
+
+<button class="btn btn-warning w-100">Add Attendance</button>
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}

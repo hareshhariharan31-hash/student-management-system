@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Student Dashboard 🎓</h2>
+
+<p><b>Name:</b> {{ student_info["name"] }}</p>
+<p><b>Department:</b> {{ student_info["department"] }}</p>
+
+<p><b>Average Marks:</b> {{ avg_marks }}</p>
+<p><b>Attendance:</b> {{ attendance_percent }}%</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <canvas id="marksChart"></canvas>
+    </div>
+    <div class="col-md-6">
+        <canvas id="attendanceChart"></canvas>
+    </div>
+</div>
+
+<br>
+
+<a href="/export_pdf" class="btn btn-success">
+    Download Marksheet PDF
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+const subjects = {{ subjects | tojson }};
+const scores = {{ scores | tojson }};
+
+new Chart(document.getElementById('marksChart'), {
+    type: 'bar',
+    data: {
+        labels: subjects,
+        datasets: [{
+            label: 'Marks',
+            data: scores,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)'
+        }]
+    }
+});
+
+new Chart(document.getElementById('attendanceChart'), {
+    type: 'pie',
+    data: {
+        labels: ['Attended','Absent'],
+        datasets: [{
+            data: [{{ attended }}, {{ total - attended }}],
+            backgroundColor: ['green','red']
+        }]
+    }
+});
+
+</script>
+<h2>Student Dashboard</h2>
+
+<p>Name: {{ student_info.name }}</p>
+<p>Department: {{ student_info.department }}</p>
+
+<h3>Marks</h3>
+
+<table border="1">
+
+<tr>
+<th>Subject</th>
+<th>Marks</th>
+</tr>
+
+{% for i in range(subjects|length) %}
+<tr>
+<td>{{ subjects[i] }}</td>
+<td>{{ scores[i] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<p>Average Marks: {{ avg_marks }}</p>
+
+<h3>Attendance</h3>
+
+<p>Total Classes: {{ total }}</p>
+<p>Attended: {{ attended }}</p>
+<p>Attendance %: {{ attendance_percent }}</p>
+
+<a href="/student/edit">Edit Profile</a>
+
+{% endblock %}

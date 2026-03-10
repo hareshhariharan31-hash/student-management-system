@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center mt-5">
+    <h1>Welcome to Student Management System 🎓</h1>
+    <p class="lead mt-3">
+        Our Student Management System helps institutions efficiently manage
+        students, staff, attendance, and academic performance.
+    </p>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h4>📊 Academic Tracking</h4>
+            <p>Track student marks and performance analytics easily.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>📅 Attendance Monitoring</h4>
+            <p>Maintain accurate attendance records and reports.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h4>🔐 Secure Access</h4>
+            <p>Role-based access for Admin, Staff, and Students.</p>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <a href="/login" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</div>
+
+{% endblock %}

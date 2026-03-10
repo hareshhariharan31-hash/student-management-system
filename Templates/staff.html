@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Staff Dashboard 👨‍🏫</h2>
+
+<a href="/add_student" class="btn btn-primary">Add Student</a>
+<a href="/view_students" class="btn btn-dark">View Students</a>
+
+Age
+<input type="number" name="age">
+
+Email
+<input type="email" name="email">
+
+Mobile
+<input type="text" name="mobile">
+
+Address
+<textarea name="address"></textarea>
+
+{% endblock %}

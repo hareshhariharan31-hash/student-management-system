@@ -1,0 +1,17 @@
+<h5>Menu</h5>
+<hr>
+
+{% if session.get('role') == 'admin' %}
+<a href="/admin" class="text-white d-block mb-2">Dashboard</a>
+<a href="/add_staff" class="text-white d-block mb-2">Add Staff</a>
+{% endif %}
+
+{% if session.get('role') == 'staff' %}
+<a href="/staff" class="text-white d-block mb-2">Dashboard</a>
+<a href="/add_student" class="text-white d-block mb-2">Add Student</a>
+<a href="/view_students" class="text-white d-block mb-2">Manage Students</a>
+{% endif %}
+
+{% if session.get('role') == 'student' %}
+<a href="/student" class="text-white d-block mb-2">My Dashboard</a>
+{% endif %}

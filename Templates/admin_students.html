@@ -1,0 +1,61 @@
+<h2>All Students</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Phone</th>
+        <th>Action</th>
+    </tr>
+
+    {% for s in students %}
+    <tr>
+        <td>{{ s.name }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.department }}</td>
+        <td>{{ s.phone }}</td>
+        <td>
+            <a href="{{ url_for('delete_student', student_id=s.id) }}"
+               onclick="return confirm('Are you sure?')">
+               Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    <h2>All Students</h2>
+
+<table border="1">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Phone</th>
+<th>Age</th>
+<th>Parent Name</th>
+<th>Parent Mobile</th>
+<th>Address</th>
+<th>Action</th>
+</tr>
+
+{% for s in students %}
+<tr>
+<td>{{ s.name }}</td>
+<td>{{ s.email }}</td>
+<td>{{ s.department }}</td>
+<td>{{ s.phone }}</td>
+<td>{{ s.age }}</td>
+<td>{{ s.parent_name }}</td>
+<td>{{ s.parent_mobile }}</td>
+<td>{{ s.address }}</td>
+
+<td>
+<a href="/admin/delete_student/{{s.id}}">Delete</a>
+</td>
+
+</tr>
+{% endfor %}
+</table>
+</table>
+
+<a href="{{ url_for('admin') }}">Back</a>

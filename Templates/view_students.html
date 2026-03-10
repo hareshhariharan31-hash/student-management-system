@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>All Students</h2>
+
+<table class="table table-bordered shadow">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Department</th>
+<th>Actions</th>
+</tr>
+
+{% for s in students %}
+<tr>
+<td>{{ s[1] }}</td>
+<td>{{ s[2] }}</td>
+<td>{{ s[3] }}</td>
+<td>
+<a href="/add_marks/{{ s[0] }}" class="btn btn-sm btn-success">Marks</a>
+<a href="/add_attendance/{{ s[0] }}" class="btn btn-sm btn-warning">Attendance</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/staff" class="btn btn-secondary">Back</a>
+
+{% endblock %}

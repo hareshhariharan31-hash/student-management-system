@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Staff</h2>
+
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow p-4">
+      <form method="POST">
+        <div class="mb-3">
+          <input class="form-control" name="username" placeholder="Username">
+        </div>
+
+        <div class="mb-3">
+          <input class="form-control" name="password" type="password" placeholder="Password">
+        </div>
+
+        <div class="mb-3">
+          <input class="form-control" name="mobile" placeholder="Mobile">
+        </div>
+
+        <button class="btn btn-success w-100">Add Staff</button>
+      </form>
+      Name
+<input type="text" name="name">
+
+Age
+<input type="number" name="age">
+
+Email
+<input type="email" name="email">
+
+Mobile
+<input type="text" name="mobile">
+
+Address
+<textarea name="address"></textarea>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

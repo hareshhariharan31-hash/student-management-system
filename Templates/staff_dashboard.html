@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Staff Dashboard 📈</h2>
+
+<div class="row">
+<div class="col-md-6">
+<div class="card p-4 shadow">
+<h4>Total Students</h4>
+<h2>{{ total_students }}</h2>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="card p-4 shadow">
+<h4>Average Marks</h4>
+<h2>{{ avg_marks }}</h2>
+</div>
+</div>
+</div>
+
+<br>
+
+<a href="/add_student" class="btn btn-primary">Add Student</a>
+<a href="{{ url_for('manage_students') }}" class="btn btn-primary">
+    Manage Students
+</a>
+
+{% endblock %}

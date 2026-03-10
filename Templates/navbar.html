@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-primary">
+<div class="container-fluid">
+<span class="navbar-brand">🎓 College ERP System</span>
+
+{% if session.get('username') %}
+<span class="text-white">
+Welcome {{ session.get('username') }} |
+<a href="/logout" class="text-white">Logout</a>
+</span>
+{% endif %}
+
+</div>
+</nav>

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard 👑</h2>
+
+<div class="row mt-4">
+
+  <div class="col-md-4 mb-3">
+    <div class="card bg-primary text-white shadow h-100">
+      <div class="card-body text-center">
+       <h3>Total Students</h3>
+       <h2>
+        <a href="{{ url_for('admin_students') }}">
+        {{ total_students }}
+      </a>
+    </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card bg-success text-white shadow h-100">
+      <div class="card-body text-center">
+        <h3>Total Staff</h3>
+<h2>
+    <a href="{{ url_for('admin_staff') }}">
+        {{ total_staff }}
+    </a>
+</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card bg-warning text-white shadow h-100">
+      <div class="card-body text-center">
+        <h5>Average Marks</h5>
+        <h3>{{ avg_marks }}</h3>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mt-4">
+  <a href="/add_staff" class="btn btn-dark">Add Staff</a>
+</div>
+
+<hr class="my-4">
+
+<h4>Subject Performance Analytics 📊</h4>
+
+<div class="card shadow p-3">
+  <canvas id="adminChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+const subjects = {{ subjects|default('[]')|safe }};
+const averages = {{ averages|default('[]')|safe }};
+
+if (subjects.length > 0) {
+    new Chart(document.getElementById('adminChart'), {
+        type: 'bar',
+        data: {
+            labels: subjects,
+            datasets: [{
+                label: 'Average Marks per Subject',
+                data: averages,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+} else {
+    document.getElementById('adminChart').parentElement.innerHTML =
+        "<p class='text-muted'>No marks data available yet.</p>";
+}
+
+</script>
+
+{% endblock %}

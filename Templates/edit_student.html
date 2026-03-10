@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Student</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h2>Edit Student</h2>
+
+<form method="POST">
+
+Name:<br>
+<input type="text" name="name" value="{{student[1]}}"><br><br>
+
+Email:<br>
+<input type="text" name="email" value="{{student[2]}}"><br><br>
+
+Department:<br>
+<input type="text" name="department" value="{{student[3]}}"><br><br>
+
+Phone:<br>
+<input type="text" name="phone" value="{{student[4]}}"><br><br>
+
+<input type="submit" value="Update Student">
+
+</form>
+
+Parent Name
+<input type="text" name="parent_name">
+
+Parent Email
+<input type="email" name="parent_email">
+
+Parent Mobile
+<input type="text" name="parent_mobile">
+
+Student Age
+<input type="number" name="age">
+
+Address
+<textarea name="address"></textarea>
+
+<br>
+
+<a href="/students">Back</a>
+
+</body>
+</html>

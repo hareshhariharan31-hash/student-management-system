@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Marks</h2>
+
+<div class="col-md-5">
+<div class="card p-4 shadow">
+
+<form method="POST">
+
+<input class="form-control mb-3" name="subject" placeholder="Subject">
+
+<input class="form-control mb-3" name="marks" type="number" placeholder="Marks">
+
+<button class="btn btn-success w-100">Add Marks</button>
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}

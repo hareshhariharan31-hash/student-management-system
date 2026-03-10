@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Reset Password</h3>
+
+<form method="POST">
+    <input type="text" name="username" placeholder="Username" required class="form-control mb-2">
+    <input type="text" name="otp" placeholder="Enter OTP" required class="form-control mb-2">
+    <input type="password" name="password" placeholder="New Password" required class="form-control mb-2">
+    <button class="btn btn-success">Reset Password</button>
+    <p class="mt-2">
+    <a href="/login">Back to Login</a>
+</p>
+</form>
+
+{% endblock %}

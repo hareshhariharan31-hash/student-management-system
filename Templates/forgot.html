@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Forgot Password</h3>
+
+<form method="POST">
+    <input type="text" name="username" placeholder="Enter Username" required class="form-control mb-2">
+    <button class="btn btn-primary">Send OTP</button>
+    <p class="mt-2">
+    <a href="/reset">Already have OTP? Reset Here</a>
+</p>
+</form>
+
+{% endblock %}

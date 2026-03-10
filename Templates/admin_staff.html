@@ -1,0 +1,60 @@
+<h2>All Staff</h2>
+
+<table border="1">
+    <tr>
+        <th>Username</th>
+        <th>Mobile</th>
+        <th>Role</th>
+        <th>Action</th>
+    </tr>
+
+    {% for s in staff %}
+    <tr>
+        <td>{{ s.username }}</td>
+        <td>{{ s.mobile }}</td>
+        <td>{{ s.role }}</td>
+        <td>
+            <a href="{{ url_for('delete_staff', user_id=s.id) }}"
+               onclick="return confirm('Delete staff?')">
+               Delete
+            </a>
+
+            {% if s.role == "staff" %}
+            |
+            <a href="{{ url_for('promote_staff', user_id=s.id) }}">
+               Make Admin
+            </a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    <h2>Staff List</h2>
+
+<table border="1">
+
+<tr>
+<th>Username</th>
+<th>Mobile</th>
+<th>Role</th>
+<th>Action</th>
+</tr>
+
+{% for s in staff %}
+<tr>
+
+<td>{{ s.username }}</td>
+<td>{{ s.mobile }}</td>
+<td>{{ s.role }}</td>
+
+<td>
+<a href="/admin/edit_staff/{{s.id}}">Edit</a>
+<a href="/admin/delete_staff/{{s.id}}">Delete</a>
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+</table>
+
+<a href="{{ url_for('admin') }}">Back</a>
