@@ -631,8 +631,6 @@ def export_pdf():
     )
 
 # ---------------- OTP FORGOT PASSWORD ----------------
-server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30)
-
 @app.route('/forgot', methods=['GET','POST'])
 def forgot():
 
@@ -686,6 +684,28 @@ def forgot():
         return "OTP sent to your registered email!"
 
     return render_template("forgot.html")
+
+from email.mime.text import MIMEText
+
+def send_email_otp(to_email, otp):
+    try:
+        sender_email = "yourgmail@gmail.com"
+        password = "your_app_password"
+
+        msg = MIMEText(f"Your OTP is: {otp}")
+        msg["Subject"] = "Password Reset OTP"
+        msg["From"] = sender_email
+        msg["To"] = to_email
+
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30)
+        server.login(sender_email, password)
+        server.sendmail(sender_email, to_email, msg.as_string())
+        server.quit()
+
+        print("OTP sent successfully")
+
+    except Exception as e:
+        print("Email sending failed:", e)
 
 @app.route('/reset', methods=['GET','POST'])
 def reset():
