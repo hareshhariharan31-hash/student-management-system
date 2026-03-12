@@ -631,6 +631,8 @@ def export_pdf():
     )
 
 # ---------------- OTP FORGOT PASSWORD ----------------
+server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30)
+
 @app.route('/forgot', methods=['GET','POST'])
 def forgot():
 
@@ -658,16 +660,17 @@ def forgot():
             (user["student_id"],)
         ).fetchone()
     
-        elif user ["role"] == "staff" or user["role"] == "admin":
+        elif user["role"] == "staff" or user["role"] == "admin":
             data = conn.execute(
-            "SELECT username FROM users WHERE username=?",
+            "SELECT email FROM users WHERE username=?",
             (username,)
         ).fetchone()
 
-        if not data:
-            conn.close()
+        if data and data["email"]:
+            send_email_otp(data["email"], otp)
+        else:
             return "Email not found!"
-
+        
         conn.execute("DELETE FROM otp WHERE username=?", (username,))
 
         conn.execute(
